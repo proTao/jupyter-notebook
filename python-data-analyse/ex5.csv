@@ -1,0 +1,4 @@
+a,b,c,d,message
+1,2,,4,hello
+5,6,7,NULL,world
+9,balabala,11,12,NA
