@@ -1,0 +1,1614 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>中国科学院邮件系统</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    
+    
+
+    
+        
+        <link id="favicon" rel="shortcut icon" href="https://mail.cstnet.cn/coremail/s?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;func=getInsidePageTitleLogoData">
+    
+    
+
+
+    
+
+
+<link href="fanyi_files/var1.css" rel="stylesheet" type="text/css" charset="utf-8">
+<link href="fanyi_files/var1_blue.css" rel="stylesheet" type="text/css" charset="iso-8859-1">
+
+
+
+    
+        
+    
+    
+
+<link href="fanyi_files/var_locale1_zh_CN.css" rel="stylesheet" type="text/css" charset="ISO-8859-1">
+<style>
+    
+    
+</style>
+
+    <script type="text/javascript"><!--
+    var webmailWindow = true;
+    //--></script>
+
+    <script type="text/javascript" src="fanyi_files/common.js" charset="iso-8859-1"></script>
+    <script type="text/javascript" src="fanyi_files/prototype_002.js" charset="iso-8859-1"></script>
+    <script type="text/javascript" src="fanyi_files/prototype.js" charset="iso-8859-1"></script>
+    <script type="text/javascript" src="fanyi_files/dom.js" charset="iso-8859-1"></script>
+    
+
+
+
+
+    
+    
+        <script type="text/javascript" src="fanyi_files/jquery-1.js" charset="iso-8859-1"></script>
+    
+
+
+
+    <script type="text/javascript" src="fanyi_files/uicommon.js" charset="iso-8859-1"></script>
+    <script type="text/javascript" src="fanyi_files/uidialog.js" charset="iso-8859-1"></script>
+    <script type="text/javascript" src="fanyi_files/simpleclient.js" charset="iso-8859-1"></script>
+    <script type="text/javascript" src="fanyi_files/auth2Lock.js" charset="iso-8859-1"></script>
+    <script type="text/javascript" src="fanyi_files/Notification.js" charset="iso-8859-1"></script>
+
+    
+    <link type="text/css" rel="stylesheet" href="fanyi_files/jquery.css" charset="iso-8859-1">
+    <script type="text/javascript" src="fanyi_files/jquery_002.js" charset="iso-8859-1"></script>
+    <script type="text/javascript" src="fanyi_files/jquery.js" charset="iso-8859-1"></script>
+    <script type="text/javascript" src="fanyi_files/jquery-ui-i18n.js"></script>
+    <script type="text/javascript" src="fanyi_files/DatePicker.js" charset="ISO-8859-1"></script>
+    <script type="text/javascript" src="fanyi_files/read.js" charset="iso-8859-1"></script>
+    <script type="text/javascript" src="fanyi_files/verifyformat.js" charset="iso-8859-1"></script>
+    <script type="text/javascript" src="fanyi_files/ImageCropper.js" charset="ISO-8859-1"></script>
+    <script type="text/javascript" src="fanyi_files/ImageCropperFunc.js" charset="iso-8859-1"></script>
+    
+
+
+<script type="text/javascript" charset="UTF-8" src="fanyi_files/resource.js"></script>
+
+    
+
+
+<script type="text/javascript" charset="UTF-8" src="fanyi_files/calendar.js"></script>
+
+    <style type="text/css"><!--
+    html, body {
+        overflow: hidden;
+    }
+    --></style>
+
+    <script type="text/javascript" src="fanyi_files/commonControls.js" charset="iso-8859-1"></script>
+    <script type="text/javascript" src="fanyi_files/pref.js" charset="iso-8859-1"></script>
+    
+        
+
+        
+        
+        <script type="text/javascript" src="fanyi_files/uitablabel.js" charset="iso-8859-1"></script>
+        <script type="text/javascript" src="fanyi_files/tabengine.js" charset="iso-8859-1"></script>
+        <script type="text/javascript" src="fanyi_files/native.js" charset="iso-8859-1"></script>
+        <script type="text/javascript" src="fanyi_files/native_002.js" charset="iso-8859-1"></script>
+    
+    <script type="text/javascript" src="fanyi_files/jquery_003.js" charset="iso-8859-1"></script>
+    <script type="text/javascript"><!--
+
+    var enableShortCut = false;
+
+    CC.sid = "PAoyKgaafJqNUxgRBIaaZelNmzedHdRI";
+    CC.locale = "zh_CN";
+    CC.showLoginForgotPass = false;
+    CC.enableSecurityLevel = false;
+    
+
+    
+    var address = [];
+    var addressGroup = [];
+
+    var hasAuth2Unlocked = false;
+    var nfAuth2Locked = false;
+
+    
+    var currentShareUid = null;
+
+    function checkQuota() {
+        var r = 190596091 / 5368709120;
+        if (r >= 1) {
+            UI.alert("您的邮箱容量已满, 请清理不需要的邮件");
+        } else if (r >= 0.9) {
+            UI.alert("您的邮箱容量将满, 请清理不需要的邮件");
+        }
+    }
+    Event.observe(window, "load", (checkQuota));
+
+    var mainFrame = "main1512361253862";
+
+    //--></script>
+
+</head>
+
+<body>
+
+
+<div id="topContainer">
+    <div id="headContainer" class="">
+        
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    function displayDetailDate() {
+        if (document.getElementById("filter.sentDateString").value == "display_detail") {
+            if (Element.visible('displayDetailDate')) {
+                document.getElementById("filter.sentDate").value = "";
+            } else {
+                document.getElementById("filter.detailDateBegin").value = "";
+                document.getElementById("filter.detailDateEnd").value = "";
+            }
+            Element.toggle('displayDetailDate');
+        } else if (Element.visible('displayDetailDate')) {
+            Element.toggle('displayDetailDate');
+            document.getElementById("filter.sentDate").value = "";
+        }
+    }
+    function checkSearchForm(form) {
+        var sendDateString = document.getElementsByName("filter.sentDateString")[0].value;
+        var receiveDate = document.getElementsByName("filter.receivedDate")[0].value;
+        var pattern = document.getElementById("pattern");
+        var fid = document.getElementById("fid");
+        var mboxa = document.getElementById("mboxa");
+        if (fid.value.indexOf(":") > -1) { //特殊处理归档搜索
+            mboxa.value = fid.value.split(":")[0];
+            fid.value = fid.value.split(":")[1];
+        }
+        var vid = document.getElementById("vid");
+        if (vid != null && vid.value != -1) {
+            mboxa.value = "@" + vid.value;
+            jQ("#vid > option").each(function() {
+                if (this.value == vid.value) {
+                    jQ("#account").val(this.text);
+                }
+            });
+        }
+
+        var sendDate = null;
+        var detailDateBegin = document.getElementById("filter.detailDateBegin").value;
+        var detailDateEnd = document.getElementById("filter.detailDateEnd").value;
+        if (sendDateString != "" && sendDateString != "display_detail") {
+            var sendDateArr = sendDateString.split("_");
+            var sendDateType = sendDateArr[0];
+            var sendDateNumber = sendDateArr[1];
+            sendDate = new Date();
+            if (sendDateType == "day"){
+                sendDate.setYear(sendDate.getFullYear());
+                sendDate.setMonth(sendDate.getMonth());
+                sendDate.setDate(sendDate.getDate() - sendDateNumber + 1);
+            } else if (sendDateType == "month") {
+                sendDate.setYear(sendDate.getFullYear());
+                sendDate.setMonth(sendDate.getMonth() - sendDateNumber);
+                sendDate.setDate(sendDate.getDate());
+            } else if (sendDateType == "year"){
+                sendDate.setYear(sendDate.getFullYear() - sendDateNumber);
+                sendDate.setMonth(sendDate.getMonth());
+                sendDate.setDate(sendDate.getDate());
+            }
+            var dayString = sendDate.getDate() < 10 ? ("0" + sendDate.getDate()) : sendDate.getDate();
+            var monthString = sendDate.getMonth() + 1;
+            sendDateString = sendDate.getFullYear() + "-" + monthString + "-" + dayString;
+            document.getElementById("filter.sentDate").value = sendDateString;
+        }
+        if (detailDateBegin != "" && !Date.isDateFormat(detailDateBegin)) {
+            UI.alert(gLang.option.msg["errSendDate"]);
+            return false;
+        } else if (receiveDate != "" && !Date.isDateFormat(receiveDate)) {
+            UI.alert(gLang.option.msg["errReceiveDate"]);
+            return false;
+        }
+        if (detailDateEnd != "") {
+            if (!Date.isDateFormat(detailDateEnd)) {
+                UI.alert(gLang.option.msg["errSendDate"]);
+                return false;
+            }
+            document.getElementById("filter.detailDateEnd").value = moveDateTime(detailDateEnd, 1);
+        }
+
+
+    
+        var size = document.getElementsByName("filter.size")[0].value;
+        var opSize = document.getElementById("op.sizeStr").value;
+        if (opSize == "mail_size_3") {
+            document.getElementById("op.size").value = ">";
+            document.getElementById("filter.size").value = 10 * 1024;
+        } else if (opSize == "mail_size_2") {
+            document.getElementById("op.size").value = "between";
+            document.getElementById("filter.size").value = 100;
+            document.getElementById("filter.size_end").value = 10 * 1024;
+        } else if (opSize == "mail_size_1") {
+            document.getElementById("op.size").value = "between";
+            document.getElementById("filter.size").value = 0;
+            document.getElementById("filter.size_end").value = 100;
+        }
+
+        if (size != "" && (parseInt(size) != size || parseInt(size) < 0)) {
+            UI.alert(gLang.option.msg["errSearchMailSize"]);
+            return false;
+        } else if (size != "" && parseInt(size) > 2147483647) { ////查找邮件大小不超过int类型的最大值
+            UI.alert(gLang.option.msg["errOverrunMaxSize"]);
+            return false;
+        }
+    
+
+        var inputs = getHintInputs();
+
+        for (var i = 0, len = inputs.length; i < len; i++) {
+            if (isByHint(inputs[i])) {
+                inputs[i].value = "";
+            }
+        }
+
+        if (!pattern || !pattern.value) {
+            // 不支持全文搜索或没有输入关键字，则默认按时间(发送时间或接收时间，由用户的邮箱设置决定)进行降序排序
+            $("order").value = "receivedDate";
+        }
+
+        return true;
+    }
+
+    function moveDateTime(dateStr, moveDays) {
+        dateStr.replace(/:/g, "-");
+        dateStr = dateStr.replace(" ", "-");
+        dateStr = dateStr.replace(".", "-");
+        var dateArray = dateStr.split('-');//yyyy,[MM|M],[dd|d]
+        var detailDate = new Date(dateArray[0], --dateArray[1], dateArray[2]);//--dateArray[1] : 从0月到11月，需要纠正
+        detailDate.setDate(detailDate.getDate() + moveDays);
+        var dayString1 = detailDate.getDate() < 10 ? ("0" + detailDate.getDate()) : detailDate.getDate();
+        var monthString1 = detailDate.getMonth() + 1;
+        monthString1 = monthString1 < 10 ? ("0" + monthString1) : monthString1;
+        return detailDate.getFullYear() + "-" + monthString1 + "-" + dayString1;
+    }
+
+
+    function getHintInputs() {
+        return document.getElementsByClassName("hasHint", "mboxSearch");
+    }
+
+    function markHint(el) {
+        el.value = el.getAttribute("hint");
+        Element.addClassName(el, "fHint");
+    }
+
+    function clearHint(el) {
+        el.value = '';
+        Element.removeClassName(el, "fHint");
+    }
+
+    function isByHint(el) {
+        return el.value == el.getAttribute("hint") && Element.hasClassName(el, "fHint");
+    }
+    function checkFid(fid){
+        if(fid == 0){
+            $('recursive').checked = true;
+            $('recursive').disabled = true;
+        }else{
+            $('recursive').disabled = false;
+        }
+    }
+    function buildFidSelectObj(vid) {
+        jQuery("#vid option").each(function() {
+            var value = $(this).value;
+            $("fid" + (value != -1 ? "_" + value : "")).style.display = (value != vid ? 'none' : '');
+            $("fid" + (value != -1 ? "_" + value : "")).disabled = value != vid;
+        });
+    }
+
+</script>
+<script type="text/javascript"><!--
+// 实现logo等比例缩放
+function adjustLogo(ImgD, FitWidth, FitHeight)
+{
+    var width = ImgD.width;
+    var height = ImgD.height;
+    if (width > 0 && height > 0) {
+        if (width / height >= FitWidth / FitHeight) {
+            if (width > FitWidth) {
+                ImgD.width = FitWidth;
+                ImgD.height = (height * FitWidth) / width;
+            }
+        } else {
+            if (height > FitHeight) {
+                ImgD.height = FitHeight;
+                ImgD.width = (width * FitHeight) / height;
+            }
+        }
+    }
+}
+jQ(document).ready(function() {
+    
+    
+    
+    $("lockscreen").onclick = function(e) {
+        var failCount = 0;
+        var sessionInvalid = false;
+        Event.stop(e || window.event);
+        new UI.Dialog({
+            title : "锁屏提示",
+            body : '<table width="100%">'+
+                    '<tbody> '+
+                    '<tr> ' +
+                    '<td width="50" valign="top"><i class="bico brig alert"></i></td>'+
+                    '<td style="word-break:keep-all; white-space:normal;word-wrap:break-word;">'+
+                    '<div class="lock-screen-detail"><p>您的邮箱将进入锁定状态</p><ul><li>邮箱将仍然保持在线</li><li>在输入正确的“邮箱密码”前任何人都无法动您的邮箱</li><li>可以更安全的保护您的隐私</li></ul></div>' +
+                    '</td>'+
+                    '</tr>' +
+                    '</tbody>'+
+                    '</table>' ,
+            button : "OK_CANCEL",
+            textOK : "确定锁屏",
+            actions : [function(sForm) {
+                new CMXClient().simpleCall("user:lockScreen", {}, function(result) {
+                    var dialog = new UI.Dialog({
+                        title  : "邮箱屏幕解锁",
+                        style : "LOCK",
+                        allowRefresh : true,
+                        body   : ''
+                                + ' <table class="std_lock">'
+                                + '   <tbody>'
+                                + '      <tr>'
+                                + '          <th>您的邮箱进入锁屏状态</th>'
+                                + '      <tr>'
+                                + '          <td class="input_tips"><div style="height:20px;"></div>请输入邮箱密码解锁:</td>'
+                                + '      </tr>'
+                                + '     <tr>'
+                                + '         <td class="input_tips">'
+                                + '         <input type="password" id="password_unlock" class="input" value=""/></td>'
+                                + '     </tr>'
+                                + '     <tr>'
+                                + '         <td  class="input_tips"><span id="error_unlock" class="error"></span></td>'
+                                + '     </tr>'
+                                + '   </tbody>'
+                                + ' </table>',
+                        button : "OK",
+                        action : function(sForm) {
+                            if ($win().$("password_unlock").value) {
+                                if (sessionInvalid == false) {
+                                    var client = new CMXClient();
+                                    client.resultListener = function(result) {
+                                        if (result.code == "FA_UNAUTHORIZED") {
+                                            failCount++;
+                                            $win().$("error_unlock").innerHTML = '密码错误,您还有' + (3-failCount)
+                                                    + ' 次输入机会!';
+                                            $win().$("password_unlock").value = "";
+                                            $win().$("password_unlock").focus();
+                                            return true;
+                                        } else if (result.code == "FA_INVALID_SESSION") {
+                                            sessionInvalid = true;
+                                        }
+                                    };
+                                    client.simpleCall("user:unlockScreen", {
+                                        password: $win().$("password_unlock").value
+                                    }, function (result) {
+                                        dialog.hide();
+                                    });
+                                } else {
+                                    top.location = "/coremail/logout.jsp";
+                                }
+                            } else {
+                                $win().$("error_unlock").innerHTML = '密码不能为空';
+                                $win().$("password_unlock").focus();
+                            }
+                            return false;
+                        },
+                        showMask : true,
+                        maskValue : 1,
+                        showClose : false,
+                        cache  : true
+                    });
+                });
+            }]
+        });
+    };
+    
+    function adjustTips() {
+        jQ('#browser_tips').css('left', function() {
+            return (jQ(document).width() - jQ(this).width()) / 2;
+        });
+    }
+    jQ(window).bind('resize', function() {
+        adjustTips();
+    });
+    jQ('#browser_tips_close').click(function() {
+        jQ('#browser_tips').fadeOut('slow');
+    });
+    adjustTips();
+
+    jQ("#options").bind({
+        click:function(){
+//            jQ("#headChangeFaces").css("top", jQ("#settingBar").offset().top + 35);
+            jQ("#headChangeFaces").css("left", jQ("#options").offset().left);
+            jQ("#headChangeFaces").show();                //每次触发显示弹窗都要重新绑定时间到新的tab
+
+            // 当在document其他地方单击时，隐藏弹窗
+            jQ(document.getElementById(GE.curModule).contentWindow.document).bind("click", function (e) {
+                disaplayOptions(e);
+            });
+            jQ(document.getElementById(GE.curModule).contentWindow.document.getElementsByTagName("a")).bind("click", function (e) {
+                disaplayOptions(e);
+            });
+            jQ(document.getElementsByTagName("a")).bind("click", function (e) {
+                disaplayOptions(e);
+            });
+            if(document.getElementById(GE.curModule).contentWindow.document.getElementById("htmleditor")) {
+                jQ(document.getElementById(GE.curModule).contentWindow.document.getElementById("htmleditor").contentWindow.document).bind("click", function (e) {
+                    disaplayOptions(e);
+                });
+                jQ(document.getElementById(GE.curModule).contentWindow.document.getElementById("htmleditor").contentWindow.document.getElementById("HtmlEditor").contentWindow.document).bind("click", function (e) {
+                    disaplayOptions(e);
+                });
+            }
+        }
+    });
+    jQ(document).bind("click", function (e) {
+        disaplayOptions(e);
+    });
+    function disaplayOptions (e) {
+        var target = jQ(e.target);
+        if (target.closest("#headChangeFaces").length == 0 && target.closest("#options").length == 0) {
+            jQ("#headChangeFaces").css("display","none");
+        }
+    }
+
+    jQ("span#faceswitch").bind("mouseleave", function(e) {
+        jQ("span#faceswitch").hide();
+    });
+});
+//--></script>
+<div class="topdata">
+
+    <div class="logo">
+        <img src="fanyi_files/s.png" alt="LOGO" onload="adjustLogo(this,200,55);" width="158" height="55">
+    </div>
+    
+    
+    <div class="ext" id="settingBar">
+        
+        <span>
+            <a href="#" id="options">
+                设置
+                <b class="arr"> &nbsp;</b>
+            </a> |
+            <a href="http://help.cstnet.cn/" target="_blank" class="helplink">帮助</a> |
+            
+            
+            <a href="https://mail.cstnet.cn/coremail/logout.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI" onclick="window.logout = true;" target="_self" class="changeSelf">退出</a>
+            
+                <a totabid="self" href="https://mail.cstnet.cn/coremail/XT3/main/selfservice.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI" class="changeService">
+                    自助查询
+                </a>
+            
+        </span>
+    </div>
+    <div id="headChangeFaces" style="display: none;">
+        <div class="changeFacesHead">
+            <span> 换肤</span>
+        </div>
+        <div class="changFacesContent">
+            
+            
+            
+    
+            
+            
+            
+                    <span class="faceLink">
+                         <a class="color_blue" style="background-color: ;" href="https://mail.cstnet.cn/coremail/changefaces.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;face=XT3&amp;skin=blue" title="经典蓝" target="_self"><i title="经典蓝" class="hcfIco blue"></i></a>
+                    </span>
+            
+                    <span class="faceLink">
+                         <a class="color_red" style="background-color: ;" href="https://mail.cstnet.cn/coremail/changefaces.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;face=XT3&amp;skin=red" title="中国红" target="_self"><i title="中国红" class="hcfIco red"></i></a>
+                    </span>
+            
+                    <span class="faceLink">
+                         <a class="color_green" style="background-color: ;" href="https://mail.cstnet.cn/coremail/changefaces.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;face=XT3&amp;skin=green" title="冷翠绿" target="_self"><i title="冷翠绿" class="hcfIco green"></i></a>
+                    </span>
+            
+                    <span class="faceLink">
+                         <a class="color_orange" style="background-color: ;" href="https://mail.cstnet.cn/coremail/changefaces.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;face=XT3&amp;skin=orange" title="阳光橙" target="_self"><i title="阳光橙" class="hcfIco orange"></i></a>
+                    </span>
+            
+                    <span class="faceLink">
+                         <a class="color_black" style="background-color: ;" href="https://mail.cstnet.cn/coremail/changefaces.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;face=XT3&amp;skin=black" title="水墨黑" target="_self"><i title="水墨黑" class="hcfIco black"></i></a>
+                    </span>
+            
+                    <span class="faceLink">
+                         <a class="color_pink" style="background-color: ;" href="https://mail.cstnet.cn/coremail/changefaces.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;face=XT3&amp;skin=pink" title="冰晶粉" target="_self"><i title="冰晶粉" class="hcfIco pink"></i></a>
+                    </span>
+            
+                    <span class="faceLink">
+                         <a class="color_wood" style="background-color: ;" href="https://mail.cstnet.cn/coremail/changefaces.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;face=XT3&amp;skin=wood" title="香柏木" target="_self"><i title="香柏木" class="hcfIco wood"></i></a>
+                    </span>
+            
+        </div>
+        
+        
+            
+        
+            
+                
+                    
+                
+                    
+                
+                    
+                        <a href="https://mail.cstnet.cn/coremail/changefaces.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;locale=en_US" onclick="$('headChangeFaces').style.display = 'none';">
+                            <div class="changeFacesBottom" style="height: 20px;">
+                                语言
+                            </div>
+                        </a>
+                    
+                
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+        <a totabid="preference" href="https://mail.cstnet.cn/coremail/XT3/pref/index.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI" onclick="$('headChangeFaces').style.display = 'none';">
+            <div class="changeFacesBottom">
+                邮箱设置
+            </div>
+        </a>
+    
+    
+            
+    
+            
+    
+            
+    
+            
+    
+            
+    
+</div>
+
+    
+    
+        
+        <form class="searcharea" id="gSearchForm" method="POST" forwardtotab="search" action="/coremail/XT3/mbox/search.jsp?action=search&amp;sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;defaultInitDateDesc=true">
+            <input name="pattern" id="pattern" class="sinput fLeft searchHint" autocomplete="off" value="邮件全文搜索 " type="text">
+
+            <div class="shbtn fLeft">
+                <a id="advancedSearch" class="arr fLeft" title="高级搜索" href="#" onclick="initSearch();">
+                    <!--[if IE 6]>&nbsp;&nbsp;&nbsp;&nbsp;<![endif]-->
+                </a>
+            </div>
+            <div class="sbtn fLeft" id="searchbtn" title="&nbsp;搜索&nbsp;&nbsp;" onclick="$('gSearchForm').trySubmit()">
+            </div>
+                
+            <script type="text/javascript">
+                Object.extend(String.prototype, {
+                    trim : function() {
+                        return this.replace(/(^\s*)|(\s*$)/g, "");
+                    }
+                });
+                (function() {
+                    function getPatternInput() {
+                        return Form.getInputs('gSearchForm', "text", "pattern")[0];
+                    }
+
+                    $('gSearchForm').trySubmit = function() {
+                        if (this.submitSearchForm()) {
+                            if (MM) {
+                                var forwardToTabName = jQ(this).attr("forwardtotab");
+                                var forwardToURL = jQ(this).attr("action");
+                                MM.getModule(null, "search");
+                                var targetForm = $(this);
+                                targetForm.target = GE.getModuleRNDIframeName(GE.getModuleNameById(forwardToTabName));
+                                targetForm.submit();
+                                return false;
+                            } else {
+                                this.submit();
+                            }
+                        }
+                        return false;
+                    };
+                    $('gSearchForm').submitSearchForm = function() {
+                        if (hasNothingToSearch()) {
+                            parent.UI.alert({
+                                message:"请输入要搜索的字或词",
+                                callback:function() {
+                                    getPatternInput().focus();
+                                }
+                            });
+                            return false;
+                        }
+                        return true;
+                    };
+                    $('gSearchForm').onsubmit = function() {
+                        return this.trySubmit();
+                    };
+
+                    function hasNothingToSearch() {
+                        return !getPatternInput().value.trim() || isByHint(getPatternInput());
+                    }
+
+                    function markHint(el) {
+                        el.value = el.defaultValue;
+                        el.className = "sinput fLeft searchHint";
+                    }
+
+                    function clearHint(el) {
+                        el.value = '';
+                        el.className = "sinput fLeft";
+                    }
+
+                    function isByHint(el) {
+                        return el.value == el.defaultValue && Element.hasClassName(el, "searchHint");
+                    }
+
+                    Object.extend(getPatternInput(), {
+                        onfocus : function() {
+                            if (isByHint(this)) {
+                                clearHint(this);
+                            }
+                        },
+                        onblur : function() {
+                            if (this.value == '') {
+                                markHint(this);
+                            }
+                        }
+                    });
+
+                    if (jQ.browser.msie && jQ.browser.version == "6.0") {
+                        jQ("#searchbtn").bind("mouseover", function(){
+                            if (Element.hasClassName(this, "sbtn")) {
+                                Element.removeClassName(this, "sbtn");
+                            }
+                            if (!Element.hasClassName(this, "sbtnHover")) {
+                                Element.addClassName(this, "sbtnHover");
+                            }
+                        });
+                        jQ("#searchbtn").bind("mouseout", function(){
+                            if (Element.hasClassName(this, "sbtnHover")) {
+                                Element.removeClassName(this, "sbtnHover");
+                            }
+                            if (!Element.hasClassName(this, "sbtn")) {
+                                Element.addClassName(this, "sbtn");
+                            }
+                        });
+                    }
+                })();
+
+                var initializing =false;
+                function initSearch () {
+                    if (initializing) return;
+                    initializing = true;
+                    new Ajax.Request('/coremail/XT3/mbox/searchWin.jsp?sid=' + 'PAoyKgaafJqNUxgRBIaaZelNmzedHdRI' , {onSuccess: function(transport) {
+                        try {
+                            var options = {
+                                style : "WIN",
+                                body : transport.responseText,
+                                init : function(div) {
+                                    //初始化日期控件
+                                    DatePicker.initDatePickers(div);
+                                    var inputs = getHintInputs();
+                                    for (var i = 0, len = inputs.length; i < len; i++) {
+                                        var input = inputs[i];
+                                        var hint = input.getAttribute("hint");
+                                        if (hint) {
+                                            if (!input.value) {
+                                                markHint(input);
+                                            }
+                                            Object.extend(input, {
+                                                onfocus : function() {
+                                                    if (isByHint(this)) {
+                                                        clearHint(this);
+                                                    }
+                                                },
+                                                onblur : function() {
+                                                    if (this.value == '') {
+                                                        markHint(this);
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    }
+                                },
+                                button  : "Search_CANCEL",
+                                actions : [
+                                    function() {
+                                        var form = document.getElementById("mboxSearch");
+                                       if (checkSearchForm(form)) {
+                                           if (MM) {
+                                               MM.getModule(null,"search", true);
+                                               var targetName =  document.getElementById("search").name;
+                                               form.target = targetName ;
+                                           }
+                                           form.submit();
+                                       }
+                                    },
+                                    null
+                                ],
+                                onClosed: function() {
+                                }
+                            };
+                            dialog = new UI.Dialog(options);
+                            var div = jQ("#dvDialogStyle");
+                            fixMboxSearchHeight();
+                            div.addClass('dvSearch'); //CM-14050 需要定制的dialog样式
+                            var span = jQ("#advancedSearch");
+                            var left = span.offset().left + span.width() - 374;
+                            var top = span.offset().top + span.height() + 5;
+                            div.attr("style", "position: absolute; z-index: 999; top: " + top + "px; left:" + left + "px;");
+                            div.hide();
+                            div.fadeIn();
+                            var doc = (document.all ? jQ(window.frames["overWin"].document) : jQ(document));    //IE是在子的iframe下面
+                            doc.click(function (e) {
+                                var target = jQ(e.target);
+                                if (target.closest(".popWin").length <= 0
+                                        && target.closest(".ui-datepicker").length <= 0
+                                        && target.closest(".ui-widget-header").length <= 0) {
+                                    dialog.cancel();
+                                }
+                            });
+                        } finally {
+                            initializing = false;
+                        }
+                    }, onFailure: function(transport) {
+                        UI.alert("request search.jsp failed.");
+                    }, onException: function(d, e) {
+                        throw e;
+                    }});
+                }
+            </script>
+        </form>
+    
+
+    
+    <div class="info">
+        <div class="t-addr">
+            
+                
+                
+                    <span class="account">张勇涛</span> <span class="email">&lt;zhangyongtao@iie.ac.cn&gt;</span>
+                
+            
+        </div>
+        <div class="t-menu">
+          <div class="t-menu-up">
+            
+            
+                <a totabid="self" href="https://mail.cstnet.cn/coremail/XT3/main/selfservice.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI">
+                    自助查询
+                </a>
+            
+            
+                
+                
+                
+            
+            
+            -
+            <a id="lockscreen" href="#">锁屏</a>
+            
+          </div>
+<div class="t-menu-down">
+             <span class="topnameclass">院网邮箱滚动新闻:</span>
+             <script type="text/javascript" src="fanyi_files/js.js">
+             </script><iframe src="fanyi_files/show.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" border="0" allowtransparency="true" scrolling="no" width="360" height="20" frameborder="0"></iframe>
+    </div>
+
+            
+
+            
+
+
+        </div>
+
+
+    </div>
+
+    <div class="tab-ctrl" id="R_tabArea"><table tabid="welcome" class="" style="width: 130px;" title="欢迎页"><tbody><tr><td class="tdl"></td><td class="ct"><nobr>欢迎页</nobr></td><td class="tdo" style="width: 1px;"></td><td class="tdr"></td></tr></tbody></table><table tabid="folder" class="on" style="width: 130px;" title="收件箱"><tbody><tr><td class="tdl"></td><td class="ct"><nobr>收件箱</nobr></td><td class="tdo"><a href="javascript:void(0);" title="关闭" class="btnS btnClose"></a></td><td class="tdr"></td></tr></tbody></table><table tabid="compose1" class="" style="width: 130px;" title="写信"><tbody><tr><td class="tdl"></td><td class="ct"><nobr>写信</nobr></td><td class="tdo"><a href="javascript:void(0);" title="关闭" class="btnS btnClose"></a></td><td class="tdr"></td></tr></tbody></table><table tabid="letter_9:1tbiCQMEEFlo9fcSTQAAsy" class="" style="width: 130px;" title="IEEE CNS 2018 Call For Papers"><tbody><tr><td class="tdl"></td><td class="ct"><nobr>IEEE CNS 2018 Call For Papers</nobr></td><td class="tdo"><a href="javascript:void(0);" title="关闭" class="btnS btnClose"></a></td><td class="tdr"></td></tr></tbody></table>
+        <a href="javascript:void(0);" onclick="return UI.Tab.closeAllTab();" title="关闭所有" id="lnkTabClose" style="" class="close-all">&nbsp;</a>
+        <b></b>
+    </div>
+
+</div>
+<!--topdata-->
+
+    </div>
+    <div id="indexContainer">
+        <div id="navContainer" style="height: 834px;">
+            
+
+
+<script type="text/javascript" src="fanyi_files/foldermain.js" charset="iso-8859-1"></script>
+<script type="text/javascript"><!--
+
+/* 导航选项鼠标经过状态 for IE6 */
+//if (jQ.browser["msie"] && jQ.browser.version == "6.0") {
+    jQ("#navContainer").bind("mouseover", function(event) {
+        var element = Event.findElement(event || window.event, "LI");
+        if (element.tagName && element.tagName.toUpperCase() == "LI") {
+            Element.addClassName(element, "hover");
+        } else {
+            element = Event.findElementByClassName(event || window.event, "cexpand");
+            if (element.className !== undefined && Element.hasClassName(element, "cexpand")) {
+                Element.addClassName(element, "hover");
+            }
+        }
+    });
+    jQ("#navContainer").bind("mouseout", function(event) {
+        var element = Event.findElement(event || window.event, "LI");
+        if (element.tagName && element.tagName.toUpperCase() == "LI") {
+            Element.removeClassName(element, "hover");
+        } else {
+            element = Event.findElementByClassName(event || window.event, "cexpand");
+            if (element.className !== undefined && Element.hasClassName(element, "cexpand")) {
+                Element.removeClassName(element, "hover");
+            }
+        }
+    });
+//}
+function setOverflow(){
+    var viewHeight=document.body.clientHeight;
+
+    var box =$('adjustSizeBox');
+    var box_positionY=getY(box);
+    var boxHeight=viewHeight-box_positionY;
+
+    var spans=document.getElementsByTagName("span");
+    var emptyFolders = document.getElementsByClassName("nav_empty");
+    var len=spans.length;
+    var getPop = document.getElementsByClassName("nav_get_pop");
+
+    if(box.clientHeight>boxHeight || box.scrollHeight>boxHeight){
+        box.style.height=boxHeight+"px";
+        Element.addClassName(box,"navDivOverflow");
+        for(var i=0;i<len;i++){
+            if(spans[i].getAttribute("name")=="expandLi")
+                spans[i].style.width="140px";
+        }
+        for (var j = 0; j < emptyFolders.length; j++) {
+            jQ(emptyFolders[j]).prev("a").css("width", "120px");
+        }
+        for (var k = 0; k < getPop.length; k++) {
+            jQ(getPop[k]).css("margin-left", "5px");
+        }
+        jQ('a[id*=navCal]').css('width','130px');
+    }else{
+        box.style.height="auto";
+        Element.removeClassName(box,"navDivOverflow");
+        for(i = 0; i < len; i++){
+            if(spans[i].getAttribute("name")=="expandLi")
+                spans[i].style.width="150px";
+        }
+        for (j = 0; j < emptyFolders.length; j++) {
+            jQ(emptyFolders[j]).prev("a").css("width", "140px");
+        }
+        for (k = 0; k < getPop.length; k++) {
+            jQ(getPop[k]).css("margin-left", "16px");
+        }
+        jQ('a[id*=navCal]').css('width','140px');
+    }
+    function getY(e) {
+        // 当前element的offsetTop可能以body作为参考系，也可能以父elemnet作为参考系，具体看浏览器类型
+        var t = e.offsetTop;
+        while (e = e.offsetParent) {
+            t += e.offsetTop;
+        }
+        return t;
+    }
+
+}
+(function () {
+    var selectedObjId;
+    var expandedObjIds = {};
+
+    function jsHandleExpand (nod, expanded) {
+        if (nod.parentNode.tagName.toUpperCase() == "LI") {
+            // <li><i>[nod]</i><a id="navFid_1">[name]</a>
+            var anchorElement = nod.nextSibling;
+            if (anchorElement && anchorElement.id) {
+                if (expanded) {
+                    expandedObjIds[anchorElement.id] = true;
+                } else {
+                    delete expandedObjIds[anchorElement.id];
+                }
+
+            }
+        }
+        setOverflow();
+    }
+
+    /*导航选项选中状态*/
+    function setSelect(obj) {
+        if (selectedObjId > "" && $(selectedObjId)) {
+            $(selectedObjId).parentNode.className = "";
+            Element.removeClassName($(selectedObjId), "active");
+        }
+        if (obj && $(obj)) {
+            if ($(obj).getAttribute("ignoreactive") != "true") {
+                Element.addClassName($(obj), "active");
+                if (!$(obj).href) {
+                    if (jQ(obj).children("i").attr("class") === 'tgl COLLAPSED'
+                            || jQ(obj).children("i").attr("class") === 'tgl FCLOSE') {
+                        Element.removeClassName($(obj), "active");
+                    }
+                }
+                $(obj).parentNode.className = "active";
+            }
+            selectedObjId = $(obj).id;
+        } else {
+            selectedObjId = null;
+        }
+    }
+    function setSelectAndVisible(obj) {
+        if (obj) {
+            expandAllParents(obj, false);
+        }
+        setSelect(obj);
+    }
+
+    function restoreLastState() {
+        for (var objId in expandedObjIds) {
+            if ($(objId)) {
+                // <li><i>[nod]</i><a id="navFid_1">[name]</a>
+                tGL_show($(objId).previousSibling);
+            }
+        }
+        
+        if (selectedObjId > "") {
+            setSelectAndVisible(selectedObjId);
+        }
+    }
+
+    function expandAllParents(objIdForFolder, expandThisNode) {
+        if (objIdForFolder.indexOf("navFid_") != 0 || !$(objIdForFolder)) {
+            return;
+        }
+
+        if (expandThisNode) {
+            tGL_show($(objIdForFolder).previousSibling);
+        }
+
+        var parentUL = $(objIdForFolder).parentNode.parentNode;
+        if (parentUL.id == "nav_other" || parentUL.id == "nav_pop") {
+            clicknode_show(parentUL.id + "_nod", parentUL);
+
+        } else if (parentUL.previousSibling) {
+            var parentObj = parentUL.previousSibling;
+            if (parentObj.id == null || parentObj.id.indexOf("navFid_") != 0) {
+                // 包含清空时
+                // <li><i>[nod11]</i><a id="navFid_11">[name11]</a><a class="nav_empty">..</a>
+                //     ...
+                // </li>
+                parentObj = parentUL.parentNode.childNodes[1];
+            }
+            var parentObjId = parentObj.id;
+            if (parentObjId) {
+                expandAllParents(parentObjId, true);
+            }
+        }
+    }
+
+
+    window.jsHandleExpand         = jsHandleExpand;
+    window.setSelect              = setSelect;
+    window.restoreLastState       = restoreLastState;
+    window.setSelectMain          = function(mainPath, fid, selectedObj) {
+        var objId = selectedObj;
+        if (objId) {
+            // skip
+        } else if (mainPath) {
+            if (mainPath.indexOf("/mbox/") == 0) {
+                objId = fid ? ("navFid_" + fid) : null;
+            } else if (mainPath.indexOf("/pab/savercpt") == 0) {
+             // skip
+            } else if (mainPath.indexOf("/pab/") == 0) {
+                objId = "navPab";
+            } else if (mainPath.indexOf("/oab/") == 0) {
+                objId = "navOab";
+            } else if (mainPath.indexOf("/cal/") == 0) {
+                objId = fid ? ("navCal_" + fid) : null;
+            } else if (mainPath.indexOf("/nf/") == 0) {
+            
+                objId = (fid == 9) || (mainPath.indexOf("/nf/trs") == 0)
+                        ? "navBnf" : "navNf";
+            } else if (mainPath.indexOf("/subs/") == 0) {
+                objId = "navSubs";
+            }
+        }
+        setSelectAndVisible(objId);
+    };
+
+    jQ.event.add(window, "resize", setOverflow);
+    jQ(document).ready(function() {
+        setOverflow();
+    });
+})();
+function clearOrGetPOPFolder (s, emptyURL, postData) {
+    postData = postData || "";
+    var redirectURL = emptyURL;
+    UI.confirm({
+        message: s,
+        yes: function() {
+            if (MM) {
+                MM.getModule(redirectURL, "folder", false, postData);
+            } else {
+                $("main").src = redirectURL + "&" + postData;
+            }
+        }
+    });
+}
+(function(){
+ var folderSelectHTML = "";
+ var newFolderName = "";
+ function autoCreateFolderName(folderName) {
+     if ('') {
+         newFolderName = '';
+     } else {
+         newFolderName = folderName;
+     }
+ }
+ function getPOPfolderSelectHTML(folderSelect) {
+    folderSelectHTML = folderSelect;
+ }
+    
+
+
+
+
+function popCreatWin(){
+    new UI.Dialog({
+        title  : "新建文件夹",
+        body   :
+                 '  <table width="410px" height="60"> <tbody><tr><td width="120" align="right">输入文件夹名称:</td><td>'+
+                 '  <input type="text" id="foldername" class="input createfolder" value="' + newFolderName + '"/></td>'+
+                 '  <tr><td align="right" >新建文件夹位置:</td><td>'+folderSelectHTML+'</td></tr>'+
+                 '  </tbody></table>',
+        button : "OK_CANCEL",
+        action : function(sForm) {
+            if (validateName($("foldername").value)) {
+                new CMXClient().simpleCall("mbox:createUserFolders", {
+                    items: [
+                        {
+                            parent: $("folder-parent").value - 0,
+                            name: $("foldername").value
+                        }
+                    ]
+                }, function () {
+                    if (MM) {
+                        CC.folderInfo = {}; // reset folder info
+                        MM.invalidModule(["folder", "search","letter_"]);
+                    }
+                    reloadNav();
+                    UI.alert("新建文件夹成功");
+                });
+            }
+        },
+        cache  : true
+    })
+}
+    window.getPOPfolderSelectHTML = getPOPfolderSelectHTML;
+    window.popCreatWin = popCreatWin;
+    window.autoCreateFolderName = autoCreateFolderName;
+})();
+    
+    
+    getPOPfolderSelectHTML('<select id="folder-parent" name="folder-parent-name">\r\n          \r\n<option value="0" >根文件夹</option><option value="1" >收件箱</option><option value="2" >草稿箱</option><option value="3" >已发送</option><option value="4" >已删除</option><option value="5" >垃圾邮件</option><option value="6" >病毒文件夹</option>\r\n        </select>');
+    
+    autoCreateFolderName('新建文件夹1');
+    /* 是否添加 */
+    function addOrSubFid(tgl) {
+        var li = tgl.parentNode;
+        var children = li.getElementsByTagName("ul")[0];
+        return children.style.display != "none";
+    }
+
+//--></script>
+
+
+<div class="core">
+    <a onclick="return clickLink(this, true);" class="check" href="https://mail.cstnet.cn/coremail/XT3/mbox/list.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;fid=1">
+        收 信
+    </a>
+    <a totabid="compose" class="compose" href="https://mail.cstnet.cn/coremail/XT3/compose/main.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI">
+        写 信
+    </a>
+</div>
+
+
+
+
+
+
+
+
+    <script type="text/javascript">
+        (function() {
+            var topWindow = window;
+
+            
+            
+
+  
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+  
+  
+  
+
+
+
+
+            topWindow.mboxChecksum = 1622694471;
+
+            
+                
+
+
+
+
+
+     
+        
+        
+        
+        
+        
+        
+    
+    
+
+
+
+                
+            
+
+            var originalFolderInfo = topWindow.CC.folderInfo;
+            var originalFolderNum = topWindow.jQ.map(originalFolderInfo, function(value, index) {
+                if (index.indexOf("mboxa_@") == -1) { //排除共享文件夹
+                    return index;
+                }
+                return null;
+            }).length;
+            topWindow.CC.folderInfo = {};
+            
+            topWindow.CC.folderInfo['1'] = '收件箱';
+            
+            topWindow.CC.folderInfo['2'] = '草稿箱';
+            
+            topWindow.CC.folderInfo['3'] = '已发送';
+            
+            topWindow.CC.folderInfo['4'] = '已删除';
+            
+            topWindow.CC.folderInfo['5'] = '垃圾邮件';
+            
+            topWindow.CC.folderInfo['6'] = '病毒文件夹';
+            
+
+            var folderInfo = topWindow.CC.folderInfo;
+            var folderNum = topWindow.jQ.map(folderInfo, function(value, index) {
+                if (index.indexOf("mboxa_@") == -1) {
+                    return index;
+                }
+                return null;
+            }).length;
+            if (originalFolderNum != folderNum) {
+                topWindow.CC.resetFolderMenu = true;
+            }
+            topWindow.CC.shareMboxMails = {};
+            
+        })();
+    </script>
+
+
+
+<div id="adjustSizeBox" style="height: auto;">
+
+<div class="cnav">
+
+    
+    
+
+    
+    <ul id="nav_system"><li class="active"><i class="tgl"></i><a onclick="return clickLink(this, true);" hidefocus="hidefocus" id="navFid_1" href="https://mail.cstnet.cn/coremail/XT3/mbox/list.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;fid=1&amp;nav_type=system&amp;inbox=true" auth2locked="false" class="unread active"><span class="fNewMail" id="navNewCount_1">(189)</span><span class="folder"><b class=""></b><span title="收件箱">收件箱</span></span></a></li><li><i class="tgl"></i><a onclick="return clickLink(this, true);" id="navFid_flagged" hidefocus="hidefocus" href="https://mail.cstnet.cn/coremail/XT3/mbox/list.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;nav_type=flagged"><span class="folder">已标记邮件</span></a><script type="text/javascript">function clickFlaggedLink(){
+                        var r = clickLink(this, true);
+                        //MM.updateModuleName('folder', '已标记');
+                        return r;
+                    }</script></li><li><i class="tgl"></i><a onclick="return clickLink(this, true);" hidefocus="hidefocus" id="navFid_2" href="https://mail.cstnet.cn/coremail/XT3/mbox/list.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;fid=2&amp;nav_type=system" auth2locked="false" class="unread"><span class="fNewMail" id="navNewCount_2">(1)</span><span class="folder"><b class=""></b><span title="草稿箱">草稿箱</span></span></a><!-- 审核日志 --></li><li><i class="tgl"></i><a onclick="return clickLink(this, true);" hidefocus="hidefocus" id="navFid_3" href="https://mail.cstnet.cn/coremail/XT3/mbox/list.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;fid=3&amp;nav_type=system" auth2locked="false" class=""><span class="folder"><b class=""></b><span title="已发送">已发送</span></span></a><!-- 审核日志 --></li></ul>
+
+    
+    
+    <div class="cexpand">
+        <div>
+            <span onclick="clicknode('nav_other_nod', 'nav_other');setSelect(this);setOverflow();" id="nav_other_span" class="ct" name="expandLi" style="width: 150px;">
+                <i class="tgl FCLOSE" id="nav_other_nod"></i>
+                <span hidefocus="">
+                    其他文件夹
+                    <span id="nav_other_count" class="fNewMail"></span>
+                </span>
+            </span>
+            <a class="icoLink faico add" onclick="Event.stop(event);popCreatWin();" style="cursor:pointer;" title="添加"></a>
+            <a class="icoLink faico set" totabid="main" href="https://mail.cstnet.cn/coremail/XT3/mbox/main.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI" title="管理"></a>
+        </div>
+    </div>
+    <div class="sub_nav">
+        <ul id="nav_other" class="sub_nav" style="display:none;"><li><i class="tgl"></i><a onclick="return clickLink(this, true);" id="navFid_4" href="https://mail.cstnet.cn/coremail/XT3/mbox/list.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;fid=4&amp;nav_type=other" auth2locked="false" class="" hidefocus=""><span class="folder"><b class=""></b><span title="已删除">已删除</span></span></a></li><li><i class="tgl"></i><a onclick="return clickLink(this, true);" id="navFid_5" href="https://mail.cstnet.cn/coremail/XT3/mbox/list.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;fid=5&amp;nav_type=other" auth2locked="false" class="" hidefocus=""><span class="folder"><b class=""></b><span title="垃圾邮件">垃圾邮件</span></span></a></li><li><i class="tgl"></i><a onclick="return clickLink(this, true);" id="navFid_6" href="https://mail.cstnet.cn/coremail/XT3/mbox/list.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;fid=6&amp;nav_type=other" auth2locked="false" class="" hidefocus=""><span class="folder"><b class=""></b><span title="病毒文件夹">病毒文件夹</span></span></a></li></ul>
+    </div>
+</div>
+
+
+
+    <div class="spline"></div>
+    <div class="cnav">
+        <ul>
+            
+                
+                <li>
+                    <i class="tgl pabNav"></i>
+                    <a totabid="Oab" id="navOab" onclick="setSelect('navOab');" href="https://mail.cstnet.cn/coremail/XT3/oab/main.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;dn=iie.ac.cn/2016r5" hidefocus="">
+                        组织通讯录
+                    </a>
+                </li>
+            
+            
+            
+            
+
+                <li class="">
+                    <i class="tgl pabNav" style="margin-left:1px"></i>
+                    <a totabid="pab" id="navPab" onclick="setSelect(this);" href="https://mail.cstnet.cn/coremail/XT3/pab/main.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;order=FN" hidefocus="">
+                        个人通讯录
+                    </a>
+                </li>
+            
+                
+            
+            
+        </ul>
+    </div>
+
+
+
+
+    <div class="spline"></div>
+    <div class="cnav">
+        
+        <div class="cexpand">
+        <ul>
+            <li>
+                <div class="cexpand">
+                    <span onclick="clicknode('nav_cal_nod', 'nav_cal');setSelect(this);setOverflow();" id="nav_cal_span" class="ct" name="expandLi" style="width: 150px;">
+                        <i class="tgl FCLOSE" id="nav_cal_nod"></i>
+                        <span hidefocus="">会议与日程</span>
+                    </span>
+
+                    
+                        
+                            <a class="icoLink faico add" totabid="preference" href="https://mail.cstnet.cn/coremail/XT3/pref/eventCreate.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;create=1" title="添加日程"></a>
+                        
+                        
+                    
+                    <a class="icoLink faico set" totabid="preference" href="https://mail.cstnet.cn/coremail/XT3/pref/eventPref.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI" title="管理日程"></a>
+
+                    <ul id="nav_cal" style="display:none;"><li id="my_calendar"><i class="tgl"></i><a totabid="calendar" id="navCal" href="https://mail.cstnet.cn/coremail/XT3/cal/index.jsp?selectedDate=&amp;query=&amp;sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;view=&amp;rnd=1512361253862" onclick="setSelect(this);" style="width: 140px;">我的日程</a><a class="icoLink faico set" totabid="preference" href="https://mail.cstnet.cn/coremail/XT3/pref/eventShare.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;fid=1" title="管理日程"></a></li></ul>
+                </div>
+            </li>
+        </ul>
+        </div>
+    </div>
+
+
+
+
+
+<div class="spline"></div>
+<div class="cnav">
+    <div class="cexpand">
+        <div>
+            <span onclick="clicknode('nav_mail_nod', 'nav_mail');setSelect(this);setOverflow();" id="nav_mail_span" class="ct" name="expandLi" style="width: 150px;">
+                <i class="tgl FCLOSE" id="nav_mail_nod"></i>
+                <a href="javascript:void(0);" onclick="return false;" hidefocus="">
+                    邮箱中心
+                </a>
+            </span>
+        </div>
+    </div>
+    <div class="sub_nav">
+    <ul id="nav_mail"><li><div class="cexpand"><div><span onclick="clicknode('nav_pop_nod', 'nav_pop');setSelect(this);setOverflow();" id="nav_pop_span" class="ct" name="expandLi" style="width: 150px;"><i class="tgl" id="nav_pop_nod"></i><span hidefocus="">其他邮箱<span id="nav_pop_count" class="fNewMail"></span></span></span><a id="addPOP" class="icoLink faico add" totabid="preference" href="https://mail.cstnet.cn/coremail/XT3/pref/popEdit.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;edit=add" title="添加"></a><span id="addPOP_overflow" style="display:none;" class="icoLink faico" title="代收邮件帐号数目超过限制!"></span><a class="icoLink faico set" totabid="preference" href="https://mail.cstnet.cn/coremail/XT3/pref/poplist.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI" title="管理"></a></div><ul id="nav_pop" style="display:none;"></ul></div></li><li><i class="tgl"></i><a totabid="pref" id="mes_filter" href="https://mail.cstnet.cn/coremail/XT3/pref/filterlist.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI" onclick="setSelect(this);" hidefocus="">来信分类</a></li></ul>
+    </div>
+</div>
+
+
+
+    <div class="spline"></div>
+    <div class="cnav">
+        <div class="cexpand">
+            <div>
+                <span onclick="clicknode('nav_file_nod', 'nav_file');setSelect(this);setOverflow();" id="nav_file_span" class="ct" name="expandLi" style="width: 150px;">
+                    <i class="tgl FOPEN" id="nav_file_nod"></i>
+                    <a href="javascript:void(0);" onclick="return false;" hidefocus="">
+                        文件中心
+                    </a>
+                </span>
+            </div>
+        </div>
+        <div class="sub_nav">
+            <ul id="nav_file"><li><i class="tgl"></i><a totabid="nf" id="navBnf" href="https://mail.cstnet.cn/coremail/XT3/nf/trsFileList.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI&amp;fid=9" onclick="setSelect(this);" hidefocus="">文件中转站</a></li><li id="nav_nf"><li id="nav_nf"><i class="tgl"></i><a onclick="return clickLink(this, true);" id="navPnf" href="https://mail.cstnet.cn/coremail/XT3/nf/list.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI" auth2locked="false" hidefocus=""><b class=" "></b><span class="folder">个人网盘</span></a></li></li></ul>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="spline"></div>
+    <div class="cnav">
+        <div class="cexpand">
+            <div>
+                <span onclick="clicknode('nav_app_nod', 'nav_app');setSelect(this);setOverflow();" id="nav_app_span" class="ct" name="expandLi" style="width: 150px;">
+                    <i class="tgl FOPEN" id="nav_app_nod"></i>
+                    <a href="javascript:void(0);" onclick="return false;" hidefocus="">
+                        应用中心
+                    </a>
+                </span>
+            </div>
+        </div>
+        <div class="sub_nav">
+        <ul id="nav_app"><li><i class="tgl"></i><a href="http://csp.escience.cn/?coremail_userid=zhangyongtao%40iie.ac.cn&amp;coremail_username=%e5%bc%a0%e5%8b%87%e6%b6%9b&amp;domain=iie.ac.cn" title="External Link" target="_blank" hidefocus="">国际会议平台</a></li><li><i class="tgl"></i><a href="http://ddl.escience.cn/system/switch?coremail_userid=zhangyongtao%40iie.ac.cn&amp;coremail_username=%e5%bc%a0%e5%8b%87%e6%b6%9b&amp;domain=iie.ac.cn" title="External Link" target="_blank" hidefocus="">团队文档库</a></li><li><i class="tgl"></i><a href="http://www.escience.cn/people/?coremail_userid=zhangyongtao%40iie.ac.cn&amp;coremail_username=%e5%bc%a0%e5%8b%87%e6%b6%9b&amp;domain=iie.ac.cn" title="External Link" target="_blank" hidefocus="">科研主页</a></li><li><i class="tgl"></i><a href="https://passport.escience.cn/oauth2/authorize?coremail_userid=zhangyongtao%40iie.ac.cn&amp;coremail_username=%e5%bc%a0%e5%8b%87%e6%b6%9b&amp;domain=iie.ac.cn&amp;response_type=code&amp;redirect_uri=http%3A%2F%2Fecard.kepu.cn%2Fcallback&amp;client_id=31195&amp;theme=simple" title="External Link" target="_blank" hidefocus="">科苑贺卡</a></li><li><i class="tgl"></i><a href="http://stpaper.cn/?coremail_userid=zhangyongtao%40iie.ac.cn&amp;coremail_username=%e5%bc%a0%e5%8b%87%e6%b6%9b&amp;domain=iie.ac.cn" title="External Link" target="_blank" hidefocus="">中国科讯</a></li></ul>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+<iframe style="width:0;height:0;display:none" id="loadNav" src="fanyi_files/load_nav.html" width="0" height="0" frameborder="0"></iframe>
+
+<script type="text/javascript"><!--
+function needReloadNavOrNot(fid, count) {
+    if(!fid) {
+        return;
+    }
+    if (!count) {
+        count = 0;
+    }
+    var navNewCount = "(0)";
+    if ($("navNewCount_" + fid)) {
+        navNewCount = $("navNewCount_" + fid).innerHTML;
+    }
+    var countString = "(" + count + ")";
+    if (countString != navNewCount) {
+        reloadNav();
+    }
+}
+
+function playNotifyAudio() {
+    var audioCtrl = $("audio_control");
+    if (audioCtrl) {
+        audioCtrl.innerHTML = '<embed src="" hidden="true" autostart="true"></embed>';
+    }
+}
+
+function openExternalLink(aEl) {
+    var url = aEl.href;
+    var features = aEl.getAttribute("Features") || "";
+    features = features.toLowerCase();
+    var featuresArray = features.split(",");
+    var featuresMap = {};
+    for (var i = 0; i < featuresArray.length; i++) {
+        var kvStr = featuresArray[i].trim();
+        var idx = kvStr.indexOf("=");
+        if (idx <= 0) {
+            continue;
+        }
+        var key = kvStr.substring(0, idx).trim();
+        var value = kvStr.substring(idx + 1).trim();
+        if (key && value) {
+            featuresMap[key] = value;
+        }
+    }
+    if(!featuresMap.width) {
+      featuresMap.width = 600;
+    }
+    if (!featuresMap.height) {
+        featuresMap.height = 300;
+    }
+    if(!featuresMap.left) {
+      featuresMap.left = (screen.width - featuresMap.width) / 2;
+    }
+    if (!featuresMap.top) {
+        featuresMap.top = (screen.height - featuresMap.height) / 2;
+    }
+
+    featuresArray = [];
+    for(var attr in featuresMap) {
+      featuresArray.push(attr + "=" + featuresMap[attr]);
+    }
+    features = featuresArray.join(",");
+    window.open(url, 'ExternalLinkWindow', features);
+    return false;
+}
+
+function clickSharedMbox(index, postFix) {
+    clicknode('cal_shr_det_nod_' + index, 'nav_shr_det_' + index);
+    setOverflow();
+}
+
+function initCalURL(obj) {
+    var activeNode = jQ("#nav_cal li.active");
+    if (activeNode.length > 0) {
+        var aHref= activeNode.find("a").attr("href");
+        var currentHref = obj.href;
+        currentHref = removeUrlParam(currentHref, "fid");
+        var selectedFid = fGetParamValueByURL(aHref, "fid");
+        obj.href = currentHref + "&fid=" + selectedFid;
+
+    } else {
+        jQ("#nav_cal").find("li").each(function() {
+            jQ(this).find("a").attr('ignoreactive', true);
+        });
+
+    }
+}
+
+function reActiveFolderLink() {
+    jQ("#nav_cal").find("li").each(function() {
+        jQ(this).find("a").attr('ignoreactive', false);
+    });
+}
+//--></script>
+
+
+        </div>
+        <div id="mainContainer" style="height: 834px;">
+            
+                
+                    <div id="divfolder" style=""><iframe scrolling="auto" id="folder" name="folder1512361254976" src="fanyi_files/list.html" style="border:0px none;width:100%;height:834px" frameborder="0"></iframe></div><div id="divwelcome" style="display: none;"><iframe scrolling="auto" id="welcome" name="welcome1512361255198" src="fanyi_files/welcome.html" style="border:0px none;width:100%;height:834px" frameborder="0"></iframe></div><div id="divcompose1" style="display: none;"><iframe scrolling="auto" id="compose1" name="compose11512361259922" src="fanyi_files/main.html" style="border:0px none;width:100%;height:834px" frameborder="0"></iframe></div><div id="divletter_9:1tbiCQMEEFlo9fcSTQAAsy" style="display: none;"><iframe scrolling="auto" id="letter_9:1tbiCQMEEFlo9fcSTQAAsy" name="letter_9:1tbiCQMEEFlo9fcSTQAAsy1512361290726" src="fanyi_files/viewmail.html" style="border:0px none;width:100%;height:834px" frameborder="0"></iframe></div><div id="rightBorderBottom"></div>
+                
+                
+            
+        </div>
+    </div>
+</div>
+
+
+<iframe style="width:0;height:0;display:none" src="main/intervalCheck.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI" width="0" height="0" frameborder="0"></iframe>
+
+
+<iframe id="loadAddData" style="width:0;height:0;display:none" src="fanyi_files/loaddata.html" width="0" height="0" frameborder="0"></iframe>
+
+
+
+
+
+<script type="text/javascript"><!--
+
+function resizeTabWidth(topWidth) {
+    var tabRightWidth = 210;
+    tabRightWidth = ($("gSearchForm") || {}).offsetWidth || 0;
+    UI.Tab.size(topWidth - tabRightWidth - 25);
+}
+var doResize = function() {
+    var viewport = Dom.getViewPort();
+
+    var topWidth = viewport.width;
+    var topHeight = viewport.height;
+
+
+
+    var mainHeight = Math.max(0, (topHeight - document.getElementById("headContainer").offsetHeight));
+    document.getElementById("mainContainer").style.height = mainHeight + "px";
+    document.getElementById("navContainer").style.height = mainHeight + "px";
+    
+    resizeTabWidth(topWidth);
+    
+    jQ("div iframe", "#mainContainer").each(function(){
+        $(this).style.height = mainHeight + "px";
+    });
+
+};
+
+
+
+    window.onresize = doResize;
+    doResize();
+
+    
+        GE_Init();
+        initModulePage();
+
+        function initModulePage() {
+            
+            
+
+            var welcomeURL = "main/welcome.jsp?sid=" + CC.sid;
+            var folderURL = "mbox/list.jsp?sid=" + CC.sid + "&fid=1";
+
+            MM.getModule(welcomeURL, null, null, null, {putHistory: false});
+            
+            MM.getModule(folderURL, null, null, null, {putHistory: false});
+            
+
+            var mainPageUrl = "main/welcome.jsp?sid=PAoyKgaafJqNUxgRBIaaZelNmzedHdRI";
+            if(mainPageUrl.indexOf("personal.jsp") > -1){
+                setTimeout(function(){
+                    MM.getModule(mainPageUrl);
+                }, 100);
+            }else{
+                MM.getModule(mainPageUrl);
+            }
+
+            var topWidthForTab = Dom.getViewPort().width;
+            
+            resizeTabWidth(topWidthForTab);
+        }
+    
+
+    jQ("a[totabid]").bind("click", function() {
+        return clickLink(this);
+    });
+
+
+    
+
+
+    
+
+       
+
+//--></script>
+<script type="text/javascript" src="fanyi_files/shortcut.js" charset="iso-8859-1"></script>
+
+
+
+<div id="mail_tips_loading" style="display: none; top: 0px; position: absolute; left: 750px;"><div class="cui-frameTips cui-frameTips-aside"><span class="cui-tips-icon"><b class="cui-ico cui-ico-loading"></b></span><span class="cui-tips-text">加载中..</span></div></div><div id="mail_tips_action" style="display: none;"></div><div id="CM-Plugin"><object type="application/x-cmplugin" id="cmplugin" width="0" height="0"><param name="onload" value="pluginLoaded"></object></div></body></html>
